@@ -4,7 +4,7 @@ import{Button,Modal,OverlayTrigger, Image,Tooltip} from 'react-bootstrap';
 
 
 export default function CharacterCard(props) {
-  const { img, firstName, lastName,Email,City,State,Street,StreetNumber,Telephone,imgMed} = props;
+  const { img, firstName, lastName,Email,City,State,Street,StreetNumber,Telephone,imgMed, Country, Bithday,Registered, Date} = props;
   	const [show, setShow] = useState(false);
   	const handleClose = () => setShow(false);
   	const handleShow = () => setShow(true);
@@ -15,10 +15,12 @@ export default function CharacterCard(props) {
       <p>
         <b>Email:</b> {Email}
         <br/>
-        <b>Location:</b> {City} , {State}, {Street},  {StreetNumber}
+        
         <br/>
-        <b>Telephone:</b> {Telephone}
+        <b>Birthday:</b> {Date} (Current age: {Bithday})
         <br/>
+
+
 
         <Button variant="primary" onClick={handleShow}>
         			Mas info
@@ -51,9 +53,11 @@ export default function CharacterCard(props) {
 
                   <b>Email:</b> {Email}
                   <br/>
-                  <b>Location:</b> {City} , {State}, {Street},  {StreetNumber}
+                  <b>Location:</b> {Street}, {StreetNumber}{City}, {State}, {Country}
                   <br/>
                   <b>Telephone:</b> {Telephone}
+                  <br/>
+                  <b>Registered:</b> {Registered}
                   <br/>
                   <br/>
                   <Button style={{ marginLeft:"40%"}} variant="danger" onClick={handleClose} > Back</Button>                

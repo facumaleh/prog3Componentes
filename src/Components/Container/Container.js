@@ -48,6 +48,11 @@ const [characters, setCharacters] = useState([]);
             StreetNumber={character.location.street.number}
             Telephone= {character.phone}
             imgMed={character.picture.medium}
+            Country={character.location.country}
+            Postcode={ character.location.postcode}
+            Bithday= {character.dob.age}
+            Date= {character.dob.date}
+            Registered = {character.registered.date}
 
           />
         );
