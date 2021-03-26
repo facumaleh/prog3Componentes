@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import{Button,Modal} from 'react-bootstrap';
+import{Button,Modal,OverlayTrigger, Image,Tooltip} from 'react-bootstrap';
 
 
 export default function CharacterCard(props) {
@@ -25,8 +25,25 @@ export default function CharacterCard(props) {
       					</Button>
 						  <Modal show={show} onHide={handleClose} animation={false}>
         				<Modal.Header closeButton>
+   
          			 	<Modal.Title>{firstName}  {lastName}</Modal.Title>
         				</Modal.Header>
+                <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">Facundo Maleh ,Tomas Caimmi y Agustin Ihdoype</Tooltip>} >
+    {({ ref, ...triggerHandler }) => (
+      <Button
+        variant="light"
+        {...triggerHandler}
+        className="d-inline-flex align-items-center"
+      >
+        <Image
+          ref={ref}
+          roundedCircle
+          src=""
+        />
+        <span className="ml-1">¿Quien hizo el trabajo?</span>
+      </Button>
+    )}
+  </OverlayTrigger>
        			 		<Modal.Body> 
 									<img style={{ marginLeft:"34%"}}src={img}/>
                   <br/>
@@ -37,6 +54,9 @@ export default function CharacterCard(props) {
                   <b>Location:</b> {City} , {State}, {Street},  {StreetNumber}
                   <br/>
                   <b>Telephone:</b> {Telephone}
+                  <br/>
+                  <br/>
+                  <Button style={{ marginLeft:"40%"}} variant="danger" onClick={handleClose} > Back</Button>                
 							</Modal.Body>
       					</Modal>
 

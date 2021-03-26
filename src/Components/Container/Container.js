@@ -49,13 +49,16 @@ const [characters, setCharacters] = useState([]);
             Telephone= {character.phone}
             imgMed={character.picture.medium}
 
-
-
-
           />
         );
       })} 
-    </div>)
+    </div>
+  
+    
+    
+    
+    
+    )
 
 
 }
