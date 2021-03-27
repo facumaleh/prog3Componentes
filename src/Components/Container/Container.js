@@ -35,9 +35,9 @@ const [characters, setCharacters] = useState([]);
  
   return (
     <div className="contenedor">
-        {filteredChars.map((character) => {
+        {filteredChars.map((character,idx) => {
         return (
-          <Character
+          <Character key={idx}
             firstName={character.name.first}
             img={character.picture.large}
             lastName={character.name.last}
