@@ -47,7 +47,7 @@ export default function CharacterCard(props) {
     )}
   </OverlayTrigger>
        			 		<Modal.Body> 
-									<img style={{ marginLeft:"34%"}}src={img}/>
+									<img style={{ marginLeft:"34%"}}src={img} alt='Not found'/>
                   <br/>
                   <br/>
 
