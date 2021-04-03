@@ -9,7 +9,7 @@ export default function CharacterCard(props) {
   	const handleClose = () => setShow(false);
   	const handleShow = () => setShow(true);
   return (
-    <div className="card">
+    <div className="card" >
       <img className="photo" src={img} alt={firstName} />
       <h2>{firstName}  {lastName} </h2>
       <p>
