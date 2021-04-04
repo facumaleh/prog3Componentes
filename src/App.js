@@ -29,8 +29,7 @@ function App() {
       <StyledApp>
       <Header /> 
       <Button style={{ marginLeft:"45%"}} variant="danger" onClick={() => themeToggler()}>Change Theme</Button>
-
-       {/* <Search/> */}
+       <Search/> 
        <Container/>
        <Footer/>
       </StyledApp>
