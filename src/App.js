@@ -23,7 +23,7 @@ function App() {
   };
  
   return (
-   
+   // cambio div classname ap por theme provider para el dark mode
       <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
       <StyledApp>
