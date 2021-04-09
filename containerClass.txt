@@ -1,0 +1,76 @@
+import React, {Component, useEffect, useState} from 'react';
+import Character from "../Cards/Card";
+
+
+
+class Container extends Component{
+	constructor(props){
+    //adentro del constructor ponemos las constantes
+super(props);
+		this.state = {valor: props.valor,};
+
+    this.state = { characters : 0};
+    this.state = {searchValue : 0};
+
+	}
+
+  getAPI(){
+
+    // async () => {
+    //   const url = "https://randomuser.me/api/?results=21";
+    //   return await fetch(url).then((result) => result.json());
+    // };
+
+  }
+
+  useEffect(){
+    this.state.getAPI().then((resp) => {
+      this.state.setCharacters(resp.results);
+    });
+
+  }
+
+  filteredChars(){
+    this.state.characters.filter((char) => {
+      return char.name.first.toLowerCase().indexOf(this.state.searchValue.toLowerCase()) !== -1;
+    });
+
+  }
+
+
+
+
+	render(){
+		return(
+            <div className="contenedor">
+                {this.state.filteredChars.map((character,idx) => {
+                return (
+                <Character key={idx}
+                    firstName={character.name.first}
+                    img={character.picture.large}
+                    lastName={character.name.last}
+                    Email={character.email}
+                    city={character.location.city}
+                    State={character.location.state}
+                    Street={character.location.street.name}
+                    StreetNumber={character.location.street.number}
+                    Telephone= {character.phone}
+                    imgMed={character.picture.medium}
+                    Country={character.location.country}
+                    Postcode={ character.location.postcode}
+                    Bithday= {character.dob.age}
+                    Date= {character.dob.date}
+                    Registered = {character.registered.date}
+
+                />
+                );
+            })} 
+            </div>
+			);
+	}
+
+}
+
+
+export default Container;
+
