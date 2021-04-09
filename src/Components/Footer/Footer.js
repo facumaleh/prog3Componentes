@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, {Component, useEffect, useState} from 'react';
 
 
 function Footer() {

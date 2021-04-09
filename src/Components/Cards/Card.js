@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import React from "react";
+import React, {Component, useEffect, useState} from 'react';
 import{Button,Modal,OverlayTrigger, Image,Tooltip} from 'react-bootstrap';
 
 

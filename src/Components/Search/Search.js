@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, {Component, useEffect, useState} from 'react';
 import CharacterCard from "../Cards/Card";
 import Container from "../Container/Container";
 

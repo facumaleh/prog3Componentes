@@ -1,6 +1,5 @@
-
+import React, {Component, useEffect, useState} from 'react';
 import Character from "../Cards/Card";
-import React, { useEffect, useState } from "react";
 
 
 
