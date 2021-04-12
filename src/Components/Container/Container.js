@@ -12,23 +12,35 @@ export default class Container extends React.Component {
       person: null,
       visible: 6,
     }; 
-    this.loadmore = this.loadmore.bind(this);
+    this.load6more = this.load6more.bind(this);
+    this.load12more = this.load12more.bind(this);
+    this.load18more = this.load18more.bind(this);
   }
   
   
 
   async componentDidMount() {
-    const url = "https://randomuser.me/api/?results=21";
+    const url = "https://randomuser.me/api/?results=70";
     const response = await fetch(url);
     const data = await response.json();
     this.setState({ person: data.results, loading: false });
   }
-  loadmore(){
+  load6more(){
     this.setState((old)=>{
       return{visible: old.visible + 6 }
     })
   }
+  load12more(){
+    this.setState((old)=>{
+      return{visible: old.visible + 12 }
+    })
+  }
 
+  load18more(){
+    this.setState((old)=>{
+      return{visible: old.visible + 18 }
+    })
+  }
   render() {
     if (this.state.loading) {
       return <div>loading...</div>;
@@ -64,7 +76,11 @@ export default class Container extends React.Component {
           );
         })} 
 
-          <Button type="button" variant="primary" style={{ width:"100%"}}  onClick={this.loadmore} >Ver mas tarjetas </Button>
+          <Button type="button" variant="primary" style={{ width:"30%"}}  onClick={this.load6more} >cargar 6 mas </Button>
+          <Button type="button" variant="danger" style={{ width:"30%"}}  onClick={this.load12more} >cargar 12 mas </Button>
+          <Button type="button" variant="primary" style={{ width:"30%"}}  onClick={this.load18more} >cargar 18 mas </Button>
+
+
       </div>
     
       
