@@ -43,7 +43,7 @@ class CharacterCard extends React.Component {
         <br/>
         
         <br/>
-        <b>Birthday:</b> {Date} (Current age: {Bithday})
+        <b>Birthday:</b> {Date} <br></br>(Current age: {Bithday})
         <br/>
         <br/>
 

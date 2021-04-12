@@ -33,7 +33,7 @@ class App extends React.Component {
     <div id="wrapper" >
 
       <Header /> 
-      <Button variant="warning" className="buttonChange"
+      <Button style={{ width:"90%"}} variant="warning" className="buttonChange"
       //  onClick={this.cambiarColor.bind(this,"black")}
       >
         Cambiar Tema

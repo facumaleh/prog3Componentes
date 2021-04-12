@@ -77,11 +77,11 @@ export default class Container extends React.Component {
             />
           );
         })} 
-
-          <Button type="button" className='buttonLoad' onClick={this.load6more} >Cargar 6 más </Button>
-          <Button type="button" className='buttonLoad' onClick={this.load12more} >Cargar 12 más </Button>
-          <Button type="button" className='buttonLoad' onClick={this.load18more} >Cargar 18 más </Button>
-
+            <div className= "Botonesx3">
+          <Button type="button" className='buttonLoad2'style={{width:"17%", margin:"7%"}} onClick={this.load6more} >Cargar 6 más </Button>
+          <Button type="button" className='buttonLoad2' style={{width:"17%", margin:"7%"}} onClick={this.load12more} >Cargar 12 más </Button>
+          <Button type="button" className='buttonLoad2' style={{width:"17%", margin:"7%"}} onClick={this.load18more} >Cargar 18 más </Button>
+        </div>
 
       </div>
     
