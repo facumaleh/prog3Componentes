@@ -36,7 +36,7 @@ class App extends React.Component {
       <Button variant="warning" className="buttonChange"
       //  onClick={this.cambiarColor.bind(this,"black")}
       >
-        Cambiar fondo
+        Cambiar Tema
       </Button>
       {/* <Search/>  */}
       <Container/>

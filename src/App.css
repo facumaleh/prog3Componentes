@@ -50,9 +50,13 @@
   }
 
 .contenedor{
-  width: 100%;
+  width: 90%;
   display: flex;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-bottom: 5%;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 
@@ -101,4 +105,25 @@
     font-size: 1rem;
     padding: 1rem;
     border-radius: .5rem;
+  }
+
+
+  .buttonChange{
+
+    margin-left: 5%;
+    margin-bottom: 2%;
+    background-color:#007bff;
+    font-weight: bold;
+
+  }
+
+  .buttonLoad{
+
+    width:10%;
+    padding: 5%;
+    align-items: center;
+    align-content: center;
+    padding-top: 10%;
+    margin: 2%;
+    
   }

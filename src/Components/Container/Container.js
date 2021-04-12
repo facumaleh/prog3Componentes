@@ -1,5 +1,7 @@
 import Character from "../Cards/Card";
 import{Button} from 'react-bootstrap';
+import '../../App.css';
+
 
 import React from "react";
 
@@ -76,9 +78,9 @@ export default class Container extends React.Component {
           );
         })} 
 
-          <Button type="button" variant="primary" style={{ width:"30%"}}  onClick={this.load6more} >cargar 6 mas </Button>
-          <Button type="button" variant="danger" style={{ width:"30%"}}  onClick={this.load12more} >cargar 12 mas </Button>
-          <Button type="button" variant="primary" style={{ width:"30%"}}  onClick={this.load18more} >cargar 18 mas </Button>
+          <Button type="button" className='buttonLoad' onClick={this.load6more} >Cargar 6 más </Button>
+          <Button type="button" className='buttonLoad' onClick={this.load12more} >Cargar 12 más </Button>
+          <Button type="button" className='buttonLoad' onClick={this.load18more} >Cargar 18 más </Button>
 
 
       </div>
