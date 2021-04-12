@@ -1,4 +1,5 @@
 import Character from "../Cards/Card";
+import{Button} from 'react-bootstrap';
 
 import React from "react";
 
@@ -62,7 +63,7 @@ export default class Container extends React.Component {
           );
         })} 
 
-          <button type="button" onClick={this.loadmore} >Ver mas tarjetas </button>
+          <Button type="button" variant="primary" style={{ width:"100%"}}  onClick={this.loadmore} >Ver mas tarjetas </Button>
       </div>
     
       

@@ -28,10 +28,10 @@ class CharacterCard extends React.Component {
         <br/>
         <b>Birthday:</b> {Date} (Current age: {Bithday})
         <br/>
+        <br/>
 
 
-
-        <Button variant="primary"  onClick= {this.openModal}>
+        <Button variant="primary"style={{ width:"80%", marginLeft:'10%'}}  onClick= {this.openModal}>
         			Mas info
       					</Button>
 						  <Modal show= {this.state.isOpen}>
