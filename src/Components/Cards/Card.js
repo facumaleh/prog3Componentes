@@ -10,15 +10,32 @@ class CharacterCard extends React.Component {
     
       this.state= {
         isOpen: false,
-          
+        colorOriginal: this.props.color,
+        color: this.props.color
             }
       }
+      MouseEnter = (colorEntrar) => {
+        if(this.state.color == this.state.colorOriginal) {
+            this.setState({color: colorEntrar})
+        }
+      }
+
+      MouseLeave = (colorViejo) => {
+        if(this.state.color == "#E0E0E0") {
+            this.setState({color: colorViejo})
+        }
+        // console.log("Salgo de la tarjeta a " + colorViejo);
+    }
+
       openModal =  ()=> this.setState({isOpen: true});
       closeModal =  ()=> this.setState({isOpen: false});
       render(){
         const { img, firstName, lastName,Email,City,State,Street,StreetNumber,Telephone,imgMed, Country, Bithday,Registered, Date} = this.props;
         return(
-         < div className="card" >
+        < div className="card" style={{backgroundColor: this.state.color}}
+        onMouseEnter={this.MouseEnter.bind(this,"#E0E0E0")}
+        onMouseLeave={this.MouseLeave.bind(this,this.state.colorOriginal)}
+        >
       <img className="photo" src={img} alt={firstName} />
       <h2>{firstName}  {lastName} </h2>
       <p>

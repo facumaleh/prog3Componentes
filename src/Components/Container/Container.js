@@ -58,6 +58,7 @@ export default class Container extends React.Component {
               Bithday= {character.dob.age}
               Date= {character.dob.date}
               Registered = {character.registered.date}
+              color="white"
   
             />
           );
