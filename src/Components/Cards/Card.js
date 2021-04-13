@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import{Button,Modal,OverlayTrigger, Image,Tooltip} from 'react-bootstrap';
+import React from 'react';
+import{Button,Modal} from 'react-bootstrap';
 
 
 
@@ -20,13 +20,13 @@ class CharacterCard extends React.Component {
 
       }
       MouseEnter = (colorEntrar) => {
-        if(this.state.color == this.state.colorOriginal) {
+        if(this.state.color === this.state.colorOriginal) {
             this.setState({color: colorEntrar})
         }
       }
 
       MouseLeave = (colorViejo) => {
-        if(this.state.color == "#E0E0E0") {
+        if(this.state.color === "#E0E0E0") {
             this.setState({color: colorViejo})
         }
         // console.log("Salgo de la tarjeta a " + colorViejo);
@@ -49,7 +49,7 @@ class CharacterCard extends React.Component {
       openModal =  ()=> this.setState({isOpen: true});
       closeModal =  ()=> this.setState({isOpen: false});
       render(){
-        const { img, firstName, lastName,Email,City,State,Street,StreetNumber,Telephone,imgMed, Country, Bithday,Registered, Date,id} = this.props;
+        const { img, firstName, lastName,Email,City,State,Street,StreetNumber,Telephone, Country, Bithday,Registered, Date,id} = this.props;
         return(
         < div className="card" style={{backgroundColor: this.state.color}}
         onMouseEnter={this.MouseEnter.bind(this,"#E0E0E0")}

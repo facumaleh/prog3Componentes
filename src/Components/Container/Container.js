@@ -22,17 +22,25 @@ export default class Container extends React.Component {
   
 
   async componentDidMount() {
-    const url = "https://randomuser.me/api/?results=70";
+    const url = "https://randomuser.me/api/?results=6";
     const response = await fetch(url);
     const data = await response.json();
     this.setState({ person: data.results, loading: false });
     console.log(data.results)
   }
 
-  load6more(){
-    this.setState((old)=>{
-      return{visible: old.visible + 6 }
-    })
+  async load6more(){
+    const url = "https://randomuser.me/api/?results=6";
+    const response = await fetch(url);
+    const data = await response.json();
+    // this.state.person.push(data.results)
+    this.setState({person: this.state.person + data.results ,loading: false, visible: this.state.visible + 6});
+    return(
+      console.log(data.results)
+    )
+    // this.setState((old)=>{
+    //   return{visible: old.visible + 6 }
+    // })
   }
   load12more(){
     this.setState((old)=>{
