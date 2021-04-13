@@ -49,14 +49,14 @@ class CharacterCard extends React.Component {
       openModal =  ()=> this.setState({isOpen: true});
       closeModal =  ()=> this.setState({isOpen: false});
       render(){
-        const { img, firstName, lastName,Email,City,State,Street,StreetNumber,Telephone,imgMed, Country, Bithday,Registered, Date} = this.props;
+        const { img, firstName, lastName,Email,City,State,Street,StreetNumber,Telephone,imgMed, Country, Bithday,Registered, Date,id} = this.props;
         return(
         < div className="card" style={{backgroundColor: this.state.color}}
         onMouseEnter={this.MouseEnter.bind(this,"#E0E0E0")}
         onMouseLeave={this.MouseLeave.bind(this,this.state.colorOriginal)}
         >
       <img className="photo" src={img} alt={firstName} />
-      <h2>{firstName}  {lastName} </h2>
+      <h2>{id}{firstName}  {lastName} </h2>
       <p>
         <b>Email:</b> {Email}
         <br/>
@@ -68,10 +68,17 @@ class CharacterCard extends React.Component {
       
       <div>
         <Button variant="success"type="button" style={{width:"17%", margin:"7%"}} onClick={this.like1}>Like</Button> 
+       
        <Button variant="danger"type="button" onClick={this.nolike}>Don't like</Button>
        <p style={{ margin:"7%"}}>{this.state.likes} liked this user</p> 
        </div>
        <br></br>
+       <Button variant="danger"style={{ width:"80%", marginLeft:'10%'}}  onClick= {this.props.onDelete.bind(this,id)}>
+        			Borrar
+      					</Button>
+                <br></br>
+                <br></br>
+
         <Button variant="primary"style={{ width:"80%", marginLeft:'10%'}}  onClick= {this.openModal}>
         			Mas info
       					</Button>

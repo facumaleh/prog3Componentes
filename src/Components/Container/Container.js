@@ -26,7 +26,9 @@ export default class Container extends React.Component {
     const response = await fetch(url);
     const data = await response.json();
     this.setState({ person: data.results, loading: false });
+    console.log(data.results)
   }
+
   load6more(){
     this.setState((old)=>{
       return{visible: old.visible + 6 }
@@ -43,6 +45,16 @@ export default class Container extends React.Component {
       return{visible: old.visible + 18 }
     })
   }
+  borrarItem(characteridx){
+    console.log( characteridx);
+    let resultados =this.state.person.filter((person)=> {
+      return( characteridx!== person.login.uuid )
+    })
+    this.setState({person: resultados})
+
+
+  }
+
   render() {
     if (this.state.loading) {
       return <div>loading...</div>;
@@ -56,7 +68,10 @@ export default class Container extends React.Component {
       <div className="contenedor">
           {this.state.person.slice(0,this.state.visible).map((character,idx) => {
           return (
-            <Character key={idx}
+            <Character 
+              onDelete= {this.borrarItem.bind(this)}
+              key={idx}
+              id= {character.login.uuid}
               firstName={character.name.first}
               img={character.picture.large}
               lastName={character.name.last}
