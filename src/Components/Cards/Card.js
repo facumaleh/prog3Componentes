@@ -56,7 +56,7 @@ class CharacterCard extends React.Component {
         onMouseLeave={this.MouseLeave.bind(this,this.state.colorOriginal)}
         >
       <img className="photo" src={img} alt={firstName} />
-      <h2>{id}{firstName}  {lastName} </h2>
+      <h2>{firstName}  {lastName} </h2>
       <p>
         <b>Email:</b> {Email}
         <br/>
