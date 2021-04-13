@@ -11,8 +11,13 @@ class CharacterCard extends React.Component {
       this.state= {
         isOpen: false,
         colorOriginal: this.props.color,
-        color: this.props.color
+        color: this.props.color,
+        likes:0
+
             }
+    this.like1 = this.like1.bind(this);
+    this.nolike = this.nolike.bind(this);
+
       }
       MouseEnter = (colorEntrar) => {
         if(this.state.color == this.state.colorOriginal) {
@@ -26,6 +31,20 @@ class CharacterCard extends React.Component {
         }
         // console.log("Salgo de la tarjeta a " + colorViejo);
     }
+    
+    like1() {
+      // Increment the likes property stored in state
+      this.setState(prevState => ({
+        likes: prevState.likes + 1
+      }));
+    }
+    nolike() {
+      // Increment the likes property stored in state
+      this.setState(prevState => ({
+        likes: prevState.likes -1
+      }));
+    }
+    
 
       openModal =  ()=> this.setState({isOpen: true});
       closeModal =  ()=> this.setState({isOpen: false});
@@ -46,8 +65,13 @@ class CharacterCard extends React.Component {
         <b>Birthday:</b> {Date} <br></br>(Current age: {Bithday})
         <br/>
         <br/>
-
-
+      
+      <div>
+        <Button variant="success"type="button" style={{width:"17%", margin:"7%"}} onClick={this.like1}>Like</Button> 
+       <Button variant="danger"type="button" onClick={this.nolike}>Don't like</Button>
+       <p style={{ margin:"7%"}}>{this.state.likes} liked this user</p> 
+       </div>
+       <br></br>
         <Button variant="primary"style={{ width:"80%", marginLeft:'10%'}}  onClick= {this.openModal}>
         			Mas info
       					</Button>
