@@ -34,7 +34,7 @@ export default class Container extends React.Component {
     const response = await fetch(url);
     const data = await response.json();
     // this.state.person.push(data.results)
-    this.setState({person: data.results });
+    this.setState({person: this.state.person + data.results });
     return{person: this.state.person}
     
     // this.setState((old)=>{

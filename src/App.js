@@ -3,7 +3,7 @@ import Header from './Components/Header/Header';
 import './App.css';
 import Container from './Components/Container/Container';
 import Footer from './Components/Footer/Footer';
-import{Button} from 'react-bootstrap';
+import{Button} from 'react-bootstrap'
 // import Search from './Components/Search/Search';
 
 
@@ -12,29 +12,28 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state= {
-        // color: this.props.backgroundColor
-    }
+        colorOriginal: "white",
+        color: "white"
+    };
 
-  //   cambiarColor= (nuevoColor)=>{
-  //     console.log("cambiar color a " + nuevoColor);
-  //     // if (this.state.color === this.state.colorOriginal){
-  //     // this.setState({color: nuevoColor})
-  //     // console.log(this.state.color);
-  //     // }
-  //     // else{
-  //     // this.setState({color: this.state.colorOriginal})
-  //     // console.log(this.state.color)
-  //     // }
-  // }
+    // cambiarColor=(nuevoColor)=>{
+    //   if (this.state.color === this.state.colorOriginal){
+    //     this.setState({color: nuevoColor})
+    //   } else {
+    //     this.setState({color: this.state.colorOriginal})
+    //   }
+    // };
+
 
 };
   render(){
   return (
-    <div id="wrapper" >
+    <div id="wrapper" 
+    style={{backgroundColor: this.state.color}}>
 
       <Header /> 
       <Button style={{ width:"90%"}} variant="warning" className="buttonChange"
-      //  onClick={this.cambiarColor.bind(this,"black")}
+       onClick={this.cambiarColor.bind(this,"black")}
       >
         Cambiar Tema
       </Button>
