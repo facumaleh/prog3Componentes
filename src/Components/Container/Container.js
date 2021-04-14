@@ -72,9 +72,9 @@ export default class Container extends React.Component {
     const url = "https://randomuser.me/api/?results=18";
     const response = await fetch(url);
     const data = await response.json();
-    // this.state.person.push(data.results)
-    this.setState({person: data.results });
-    return{person: this.state.person}
+    let total = [...this.state.person, ...data.results]
+    console.log(total);
+    this.setState({person: total})
     
     // this.setState((old)=>{
     //   return{visible: old.visible + 6 }
