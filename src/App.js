@@ -35,8 +35,8 @@ class App extends React.Component {
       <Header /> 
       <Button style={{ width:"90%"}} variant="warning" className="buttonChange"
       //  onClick={this.cambiarColor.bind(this,"black")}
-      >
-        Cambiar Tema
+      ><i class="icon-moon"> Cambiar Tema</i>
+       
       </Button>
       {/* <Search/>  */}
       <Container/>
