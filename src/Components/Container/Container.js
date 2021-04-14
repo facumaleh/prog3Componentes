@@ -30,29 +30,45 @@ export default class Container extends React.Component {
   }
 
   async load6more(){
-    const url = "https://randomuser.me/api/?results=6";
+    const url = "https://randomuser.me/api/?results=12";
     const response = await fetch(url);
     const data = await response.json();
     // this.state.person.push(data.results)
-    this.setState({person: this.state.person + data.results ,loading: false, visible: this.state.visible + 6});
-    return(
-      console.log(data.results)
-    )
+    this.setState({person: data.results });
+    return{person: this.state.person}
+    
     // this.setState((old)=>{
     //   return{visible: old.visible + 6 }
     // })
   }
-  load12more(){
-    this.setState((old)=>{
-      return{visible: old.visible + 12 }
-    })
-  }
 
-  load18more(){
-    this.setState((old)=>{
-      return{visible: old.visible + 18 }
-    })
+  async load12more(){
+    const url = "https://randomuser.me/api/?results=18";
+    const response = await fetch(url);
+    const data = await response.json();
+    // this.state.person.push(data.results)
+    this.setState({person: data.results });
+    return{person: this.state.person}
+    
+    // this.setState((old)=>{
+    //   return{visible: old.visible + 6 }
+    // })
   }
+  
+
+  async load18more(){
+    const url = "https://randomuser.me/api/?results=18";
+    const response = await fetch(url);
+    const data = await response.json();
+    // this.state.person.push(data.results)
+    this.setState({person: data.results });
+    return{person: this.state.person}
+    
+    // this.setState((old)=>{
+    //   return{visible: old.visible + 6 }
+    // })
+  }
+  
   borrarItem(characteridx){
     console.log( characteridx);
     let resultados =this.state.person.filter((person)=> {
@@ -74,7 +90,7 @@ export default class Container extends React.Component {
 
     return (
       <div className="contenedor">
-          {this.state.person.slice(0,this.state.visible).map((character,idx) => {
+          {this.state.person.map((character,idx) => {
           return (
             <Character 
               onDelete= {this.borrarItem.bind(this)}
