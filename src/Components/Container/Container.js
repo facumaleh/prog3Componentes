@@ -50,9 +50,15 @@ export default class Container extends React.Component {
   }
 
   async load12more(){
-    const url = "https://randomuser.me/api/?results=18";
+    const url = "https://randomuser.me/api/?results=12";
     const response = await fetch(url);
     const data = await response.json();
+    // console.log(this.state.person);
+    // console.log(data.results);
+    let total = [...this.state.person, ...data.results]
+    console.log(total);
+    this.setState({person: total})
+
     // this.state.person.push(data.results)
     // return{person: this.state.person}
     
