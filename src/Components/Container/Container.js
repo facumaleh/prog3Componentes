@@ -11,7 +11,7 @@ export default class Container extends React.Component {
  
     this.state = {
       loading: true,
-      person: null,
+      person: [],
       visible: 6,
     }; 
     this.load6more = this.load6more.bind(this);
@@ -30,12 +30,19 @@ export default class Container extends React.Component {
   }
 
   async load6more(){
-    const url = "https://randomuser.me/api/?results=12";
+    const url = "https://randomuser.me/api/?results=6";
     const response = await fetch(url);
     const data = await response.json();
     // this.state.person.push(data.results)
-    this.setState({person: this.state.person + data.results });
-    return{person: this.state.person}
+    // this.state.person.concat(data.results);
+    console.log(this.state.person);
+    console.log(data.results);
+    let total = [...this.state.person, ...data.results]
+    console.log(total);
+    this.setState({person: total})
+
+    // this.setState({person: this.state.person + data.results });
+    // return{person: this.state.person}
     
     // this.setState((old)=>{
     //   return{visible: old.visible + 6 }
@@ -47,8 +54,7 @@ export default class Container extends React.Component {
     const response = await fetch(url);
     const data = await response.json();
     // this.state.person.push(data.results)
-    this.setState({person: data.results });
-    return{person: this.state.person}
+    // return{person: this.state.person}
     
     // this.setState((old)=>{
     //   return{visible: old.visible + 6 }
