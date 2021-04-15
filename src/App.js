@@ -13,8 +13,12 @@ class App extends React.Component {
     super(props);
     this.state= {
         colorOriginal: "white",
-        color: "white"
+        color: "white",
+
     };
+
+    // const {search} = this.state;
+
 
     // cambiarColor=(nuevoColor)=>{
     //   if (this.state.color === this.state.colorOriginal){
@@ -26,10 +30,16 @@ class App extends React.Component {
 
 
 };
+
+
+
   render(){
+
+
+
   return (
     <div id="wrapper" 
-    style={{backgroundColor: this.state.color}}>
+      style={{backgroundColor: this.state.color}}>
 
       <Header /> 
       <Button style={{ width:"90%"}} variant="warning" className="buttonChange"
@@ -37,11 +47,15 @@ class App extends React.Component {
       ><i class="icon-moon"> Cambiar Tema</i>
        
       </Button>
+
+
+
       {/* <Search/>  */}
+      
       <Container/>
       <Footer/>
 
-	</div>
+	  </div>
 	
     
   );

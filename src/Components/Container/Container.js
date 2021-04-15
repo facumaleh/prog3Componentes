@@ -14,19 +14,36 @@ export default class Container extends React.Component {
       person: [],
       visible: 6,
     }; 
+
     this.load6more = this.load6more.bind(this);
     this.load12more = this.load12more.bind(this);
     this.load18more = this.load18more.bind(this);
-  }
-  
-  
 
+ 
+  }
+//PARTE 1
+
+state = {
+  search: ''
+}
+
+onchange= e => {
+    this.setState({ search: e.target.value});
+}
+
+//PARTE 2
   async componentDidMount() {
     const url = "https://randomuser.me/api/?results=6";
     const response = await fetch(url);
     const data = await response.json();
     this.setState({ person: data.results, loading: false });
-    console.log(data.results)
+    console.log(data.results);
+
+
+    const {search} = this.state;
+    if ( search !== '') {
+      return null
+    }
   }
 
   async load6more(){
@@ -91,6 +108,9 @@ export default class Container extends React.Component {
 
   }
 
+
+
+
   render() {
     if (this.state.loading) {
       return <div>loading...</div>;
@@ -100,32 +120,49 @@ export default class Container extends React.Component {
       return <div>didn't get a person</div>;
     }
 
+
+    //SEARCH PARTE 3
+    const {search} = this.state;
+    const nombresFiltrados = this.state.person.filter(Container => 
+    {
+       return Character.name.toLowerCase().indexOf( search ) !== -1  
+      
+    })
+
+
     return (
       <div className="contenedor">
+
+              {/* Input de search */}
+          <div style={{width:"100%",textAlign:'center'}} >
+            <input label='buscador' style={{width:"100%", textAlign:'center'}} onChange={this.onchange} placeholder='buscar persona'></input>
+          </div>
+
+
           {this.state.person.map((character,idx) => {
-          return (
-            <Character 
-              onDelete= {this.borrarItem.bind(this)}
-              key={idx}
-              id= {character.login.uuid}
-              firstName={character.name.first}
-              img={character.picture.large}
-              lastName={character.name.last}
-              Email={character.email}
-              city={character.location.city}
-              State={character.location.state}
-              Street={character.location.street.name}
-              StreetNumber={character.location.street.number}
-              Telephone= {character.phone}
-              imgMed={character.picture.medium}
-              Country={character.location.country}
-              Postcode={ character.location.postcode}
-              Bithday= {character.dob.age}
-              Date= {character.dob.date}
-              Registered = {character.registered.date}
-              color="white"
-  
-            />
+              return (
+                <Character 
+                  onDelete= {this.borrarItem.bind(this)}
+                  key={idx}
+                  id= {character.login.uuid}
+                  firstName={character.name.first}
+                  img={character.picture.large}
+                  lastName={character.name.last}
+                  Email={character.email}
+                  city={character.location.city}
+                  State={character.location.state}
+                  Street={character.location.street.name}
+                  StreetNumber={character.location.street.number}
+                  Telephone= {character.phone}
+                  imgMed={character.picture.medium}
+                  Country={character.location.country}
+                  Postcode={ character.location.postcode}
+                  Bithday= {character.dob.age}
+                  Date= {character.dob.date}
+                  Registered = {character.registered.date}
+                  color="white"
+      
+                />
           );
         })} 
             <div className= "Botonesx3">
