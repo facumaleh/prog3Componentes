@@ -67,20 +67,20 @@ class CharacterCard extends React.Component {
         <br/>
       
       <div>
-        <Button variant="success"type="button" style={{width:"17%", margin:"7%"}} onClick={this.like1}>Like</Button> 
+        <Button variant="success"type="button" style={{width:"17%", margin:"7%"}} onClick={this.like1}><i class="icon-thumbs-up"></i></Button> 
        
-       <Button variant="danger"type="button" onClick={this.nolike}>Don't like</Button>
+       <Button variant="danger"type="button"style={{width:"17%", margin:"7%"}}  onClick={this.nolike}><i class="icon-thumbs-down"></i></Button>
        <p style={{ margin:"7%"}}>{this.state.likes} liked this user</p> 
        </div>
        <br></br>
-       <Button variant="danger"style={{ width:"80%", marginLeft:'10%'}}  onClick= {this.props.onDelete.bind(this,id)}>
-        			Borrar
+       <Button variant="danger"style={{ width:"80%", marginLeft:'10%'}}  onClick= {this.props.onDelete.bind(this,id)}><i class="icon-trash">Borrar</i> 
+        	
       					</Button>
                 <br></br>
                 <br></br>
 
-        <Button variant="primary"style={{ width:"80%", marginLeft:'10%'}}  onClick= {this.openModal}>
-        			Mas info
+        <Button variant="primary"style={{ width:"80%", marginLeft:'10%'}}  onClick= {this.openModal}><i class="icon-info-sign">  	Mas info</i>
+        		 
       					</Button>
 						  <Modal show= {this.state.isOpen}>
         				<Modal.Header closeButton>
