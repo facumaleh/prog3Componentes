@@ -79,10 +79,13 @@ class CharacterCard extends React.Component {
                 <br></br>
                 <br></br>
 
-        <Button variant="primary"style={{ width:"80%", marginLeft:'10%'}}  onClick= {this.openModal}><i class="icon-info-sign">  	Mas info</i>
+        <Button variant="primary"style={{ width:"80%", marginLeft:'10%'}}  onClick= {this.openModal}>
+          <i class="icon-info-sign">  	Mas info</i>
         		 
-      					</Button>
-						  <Modal show= {this.state.isOpen}>
+      	</Button>
+
+
+				<Modal show= {this.state.isOpen}>
         				<Modal.Header closeButton>
    
          			 	<Modal.Title>{firstName}  {lastName}</Modal.Title>
@@ -103,8 +106,8 @@ class CharacterCard extends React.Component {
                   <br/>
                   <br/>
                   <Button style={{ marginLeft:"40%"}} variant="danger" onClick= {this.closeModal} > Back</Button>                
-							</Modal.Body>
-      					</Modal>
+							  </Modal.Body>
+      		</Modal>
 
       </p>
     </div>
