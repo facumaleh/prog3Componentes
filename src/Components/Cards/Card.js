@@ -12,8 +12,8 @@ class CharacterCard extends React.Component {
         isOpen: false,
         colorOriginal: this.props.color,
         color: this.props.color,
-        likes:0
-
+        likes:0,
+        // tamanio: this.props.tamanio,
             }
     this.like1 = this.like1.bind(this);
     this.nolike = this.nolike.bind(this);
@@ -23,6 +23,7 @@ class CharacterCard extends React.Component {
         if(this.state.color === this.state.colorOriginal) {
             this.setState({color: colorEntrar})
         }
+        console.log(this.state);
       }
 
       MouseLeave = (colorViejo) => {
@@ -58,11 +59,11 @@ class CharacterCard extends React.Component {
       <img className="photo" src={img} alt={firstName} />
       <h2>{firstName}  {lastName} </h2>
       <p>
-        <b>Email:</b> {Email}
+        <b className="texto1">Email:</b> {Email}
         <br/>
         
         <br/>
-        <b>Birthday:</b> {Date} <br></br>(Current age: {Bithday})
+        <b className="texto1">Birthday:</b> {Date} <br></br>(Current age: {Bithday})
         <br/>
         <br/>
       
@@ -96,13 +97,13 @@ class CharacterCard extends React.Component {
                   <br/>
                   <br/>
 
-                  <b>Email:</b> {Email}
+                  <b className="texto1">Email:</b> {Email}
                   <br/>
-                  <b>Location:</b> {Street}, {StreetNumber}{City}, {State}, {Country}
+                  <b className="texto1">Location:</b> {Street}, {StreetNumber}{City}, {State}, {Country}
                   <br/>
-                  <b>Telephone:</b> {Telephone}
+                  <b className="texto1">Telephone:</b> {Telephone}
                   <br/>
-                  <b>Registered:</b> {Registered}
+                  <b className="texto1">Registered:</b> {Registered}
                   <br/>
                   <br/>
                   <Button style={{ marginLeft:"40%"}} variant="danger" onClick= {this.closeModal} > Back</Button>                

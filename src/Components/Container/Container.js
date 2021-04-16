@@ -15,11 +15,10 @@ export default class Container extends React.Component {
       visible: 6,
     personoriginal:[],
       textoBuscar: " ",
+      // tamanioOriginal: '30%',
+      // tamanio: "30%",
+      // nuevoTamanio: "15%"
     }; 
-
-
-
- 
   }
 
 componentDidMount(){
@@ -65,11 +64,16 @@ componentDidMount(){
       var text = event.target.value
       const personajes = this.state.person
       const filtrado = personajes.filter((item) =>{
-  
-  
+
           const itemData = item.name.first.toUpperCase()
+          const lastName = item.name.last.toUpperCase()
+          const age = item.dob.age.toString()
           const textData = text.toUpperCase()
-          return itemData.indexOf(textData) > -1
+          console.log(age);
+          return (
+            itemData.includes(textData) || lastName.includes(textData) || age.includes(textData)
+            
+          )
       })
       this.setState({
           person: filtrado,
@@ -79,26 +83,35 @@ componentDidMount(){
     person:this.state.personoriginal
   })  }
 
+  cambiarTamanio=()=>{
+    if(this.state.tamanio === this.state.tamanioOriginal){
+      console.log(this.state.tamanio);
+      this.setState({tamanio: this.state.nuevoTamanio})
+    } else{
+      this.setState({tamanio: this.state.tamanioOriginal})
+      console.log(this.state.tamanio);
+    }
+    
+  }
+
   render() {
     if (this.state.loading) {
-      return <div><h1>loading...</h1></div>;
+      return <div><h1 className="texto1">loading...</h1></div>;
     }
 
     if (!this.state.person) {
-      return <div><h1>didn't get a person</h1></div>;
+      return <div><h1 className="texto1">didn't get a person</h1></div>;
     }
-
-
 
     return (
       <div className="contenedor">
+        <Button type="button" onClick={this.cambiarTamanio.bind(this)} variant="warning"> Cambiar Tamanio</Button>
 <input className="form-control"  placeholder="Buscador de personajes " value={this.state.text} onChange={(text) => this.filter(text)}/>
-          
-
 
           {this.state.person.map((character,idx) => {
               return (
                 <Character 
+                  // tamanio= {this.state.tamanio}
                   onDelete= {this.borrarItem.bind(this)}
                   key={idx}
                   id= {character.login.uuid}
