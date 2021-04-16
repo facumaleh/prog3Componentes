@@ -4,7 +4,7 @@ import './App.css';
 import Container from './Components/Container/Container';
 import Footer from './Components/Footer/Footer';
 import{Button} from 'react-bootstrap'
-// import Search from './Components/Search/Search';
+//  import Search from './Components/Search/Search';
 
 
 
@@ -50,7 +50,7 @@ class App extends React.Component {
 
 
 
-      {/* <Search/>  */}
+       {/* <Search/>  */}
       
       <Container/>
       <Footer/>

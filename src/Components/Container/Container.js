@@ -13,90 +13,39 @@ export default class Container extends React.Component {
       loading: true,
       person: [],
       visible: 6,
+    personoriginal:[],
+      textoBuscar: " ",
     }; 
 
-    this.load6more = this.load6more.bind(this);
-    this.load12more = this.load12more.bind(this);
-    this.load18more = this.load18more.bind(this);
+
 
  
   }
-//PARTE 1
 
-state = {
-  search: ''
-}
+componentDidMount(){
+  fetch('https://randomuser.me/api/?results=6')
+  .then(response => response.json())
+  .then ((data)=>{
+    this.setState({ person: data.results,personoriginal: data.results, loading: false });
+  })
+  .catch((e)=>console.log(e));}
 
-onchange= e => {
-    this.setState({ search: e.target.value});
-}
-
-//PARTE 2
-  async componentDidMount() {
-    const url = "https://randomuser.me/api/?results=6";
-    const response = await fetch(url);
-    const data = await response.json();
-    this.setState({ person: data.results, loading: false });
-    console.log(data.results);
-
-
-    const {search} = this.state;
-    if ( search !== '') {
-      return null
+// componentDidUpdate
+  loadmore(){
+    var porClassName=document.getElementsByClassName("mas")[0].value;
+    console.log(porClassName)
+    if (!porClassName) {
+      return alert ("ingrese un numero valido")
     }
-  }
+    fetch('https://randomuser.me/api/?results='+ porClassName)
+    .then(response => response.json())
+    .then ((data)=>{
+     this.state.person= [...this.state.person, ...data.results]
+     console.log(this.state.person)
+     this.setState({person: this.state.person})
+   })
+    .catch((e)=>console.log(e));}
 
-  async load6more(){
-    const url = "https://randomuser.me/api/?results=6";
-    const response = await fetch(url);
-    const data = await response.json();
-    // this.state.person.push(data.results)
-    // this.state.person.concat(data.results);
-    console.log(this.state.person);
-    console.log(data.results);
-    let total = [...this.state.person, ...data.results]
-    console.log(total);
-    this.setState({person: total})
-
-    // this.setState({person: this.state.person + data.results });
-    // return{person: this.state.person}
-    
-    // this.setState((old)=>{
-    //   return{visible: old.visible + 6 }
-    // })
-  }
-
-  async load12more(){
-    const url = "https://randomuser.me/api/?results=12";
-    const response = await fetch(url);
-    const data = await response.json();
-    // console.log(this.state.person);
-    // console.log(data.results);
-    let total = [...this.state.person, ...data.results]
-    console.log(total);
-    this.setState({person: total})
-
-    // this.state.person.push(data.results)
-    // return{person: this.state.person}
-    
-    // this.setState((old)=>{
-    //   return{visible: old.visible + 6 }
-    // })
-  }
-  
-
-  async load18more(){
-    const url = "https://randomuser.me/api/?results=18";
-    const response = await fetch(url);
-    const data = await response.json();
-    let total = [...this.state.person, ...data.results]
-    console.log(total);
-    this.setState({person: total})
-    
-    // this.setState((old)=>{
-    //   return{visible: old.visible + 6 }
-    // })
-  }
   
   borrarItem(characteridx){
     console.log( characteridx);
@@ -109,34 +58,42 @@ onchange= e => {
   }
 
 
-
+  filter(event){
+    if (event.target.value.length !== 0) {
+      
+   
+      var text = event.target.value
+      const personajes = this.state.person
+      const filtrado = personajes.filter((item) =>{
+  
+  
+          const itemData = item.name.first.toUpperCase()
+          const textData = text.toUpperCase()
+          return itemData.indexOf(textData) > -1
+      })
+      this.setState({
+          person: filtrado,
+          textoBuscar: text,
+      })
+   } else this.setState({
+    person:this.state.personoriginal
+  })  }
 
   render() {
     if (this.state.loading) {
-      return <div>loading...</div>;
+      return <div><h1>loading...</h1></div>;
     }
 
     if (!this.state.person) {
-      return <div>didn't get a person</div>;
+      return <div><h1>didn't get a person</h1></div>;
     }
 
-
-    //SEARCH PARTE 3
-    const {search} = this.state;
-    const nombresFiltrados = this.state.person.filter(Container => 
-    {
-       return Character.name.toLowerCase().indexOf( search ) !== -1  
-      
-    })
 
 
     return (
       <div className="contenedor">
-
-              {/* Input de search */}
-          <div style={{width:"100%",textAlign:'center'}} >
-            <input label='buscador' style={{width:"100%", textAlign:'center'}} onChange={this.onchange} placeholder='buscar persona'></input>
-          </div>
+<input className="form-control"  placeholder="Buscador de personajes " value={this.state.text} onChange={(text) => this.filter(text)}/>
+          
 
 
           {this.state.person.map((character,idx) => {
@@ -166,9 +123,10 @@ onchange= e => {
           );
         })} 
             <div className= "Botonesx3">
-          <Button type="button" className='buttonLoad2'style={{width:"17%", margin:"7%"}} onClick={this.load6more} >Cargar 6 más </Button>
-          <Button type="button" className='buttonLoad2' style={{width:"17%", margin:"7%"}} onClick={this.load12more} >Cargar 12 más </Button>
-          <Button type="button" className='buttonLoad2' style={{width:"17%", margin:"7%"}} onClick={this.load18more} >Cargar 18 más </Button>
+          {/* //onchange */}
+          <input className = "mas"  type="text"/> 
+          <Button type="button" className='buttonLoad2'style={{width:"10%", margin:"7%"}} onClick={this.loadmore.bind(this)} > Cargar mas </Button>
+          
         </div>
 
       </div>

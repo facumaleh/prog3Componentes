@@ -1,47 +1,32 @@
-// import React, {Component, useEffect, useState} from 'react';
-// import CharacterCard from "../Cards/Card";
-// import Container from "../Container/Container";
+
+import React from 'react';
+import{Button,Modal} from 'react-bootstrap';
 
 
 
-// export default function Navbar(props) {
+class Search extends React.Component {
 
-//   const [allUsers, setTodosUsuarios] = useState([]);
-//   const [users, setUsuarios] = useState([]);
-  
+  constructor(props) {
+      super(props);
+    
+      this.state= {
+        
 
-//   useEffect(() => {
-//     (async () => {
-//       let userData;
-//       try {
-//         const response = await fetch("https://randomuser.me/api/?results=20");
-//         userData = await response.json();
-//       } catch (error) {
-//         console.log(error);
-//         userData = [];
-//       }
-//       setTodosUsuarios(userData.results);
-//       setUsuarios(userData.results);
-//     })();
-//   }, []);
+            }
+    
 
-//   const filtrarTarjetas = event => {
-//     const value = event.target.value.toLowerCase();
-//     const filteredUsers = allUsers.filter(user => (`${user.name.first} ${user.name.last}`.toLowerCase().includes(value)));
-//     setUsuarios(filteredUsers);
-//   }
+      }
+      
+      render(){
+        return(
+            <div style={{width:"100%",textAlign:'center'}} >
+            <input label='buscador' style={{width:"100%", textAlign:'center'}} onChange={this.onchange} placeholder='buscar persona'></input>
+            </div>
+        )
 
 
-//  return(
-//   <div className="navbar">
-//   <span>Busque: </span>
+      }
 
-//       <input value={props.value} className="searchbar" onInput={filtrarTarjetas} placeholder="Buscar..."/>
+}
+export default Search
 
-//       {users.map((user, index) => (
-//         <Container key={index} userData={user} />
-//         ))}
-// </div>
-
-//  );
-// }
