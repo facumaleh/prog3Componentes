@@ -18,7 +18,6 @@ class App extends React.Component {
     };
   };
 
-    // const {search} = this.state;
 
 
     cambiarColor = (nuevoColor)=>{

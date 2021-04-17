@@ -13,8 +13,9 @@ class CharacterCard extends React.Component {
         colorOriginal: this.props.color,
         color: this.props.color,
         likes:0,
-        // tamanio: this.props.tamanio,
             }
+            {console.log(this.state)}
+
     this.like1 = this.like1.bind(this);
     this.nolike = this.nolike.bind(this);
 
@@ -52,7 +53,7 @@ class CharacterCard extends React.Component {
       render(){
         const { img, firstName, lastName,Email,City,State,Street,StreetNumber,Telephone, Country, Bithday,Registered, Date,id} = this.props;
         return(
-        < div className="card" style={{backgroundColor: this.state.color}}
+        < div className="card" style={{backgroundColor: this.state.color, width: this.props.tamanio}}
         onMouseEnter={this.MouseEnter.bind(this,"#E0E0E0")}
         onMouseLeave={this.MouseLeave.bind(this,this.state.colorOriginal)}
         >

@@ -15,12 +15,15 @@ export default class Container extends React.Component {
       visible: 6,
     personoriginal:[],
       textoBuscar: " ",
-      // tamanioOriginal: '30%',
-      // tamanio: "30%",
-      // nuevoTamanio: "15%"
+       tamanioOriginal: '30%',
+       tamanio: "30%",
+       nuevoTamanio: "17%"
     }; 
   }
 
+
+
+//solicitud api
 componentDidMount(){
   fetch('https://randomuser.me/api/?results=6')
   .then(response => response.json())
@@ -29,7 +32,10 @@ componentDidMount(){
   })
   .catch((e)=>console.log(e));}
 
-// componentDidUpdate
+
+
+
+// ver mas
   loadmore(){
     var porClassName=document.getElementsByClassName("mas")[0].value;
     console.log(porClassName)
@@ -45,7 +51,9 @@ componentDidMount(){
    })
     .catch((e)=>console.log(e));}
 
-  
+
+
+  //borrar item
   borrarItem(characteridx){
     console.log( characteridx);
     let resultados =this.state.person.filter((person)=> {
@@ -57,6 +65,8 @@ componentDidMount(){
   }
 
 
+
+  //buscador
   filter(event){
     if (event.target.value.length !== 0) {
       
@@ -83,6 +93,8 @@ componentDidMount(){
     person:this.state.personoriginal
   })  }
 
+
+  //cambiar tamañp
   cambiarTamanio=()=>{
     if(this.state.tamanio === this.state.tamanioOriginal){
       console.log(this.state.tamanio);
@@ -105,13 +117,17 @@ componentDidMount(){
 
     return (
       <div className="contenedor">
-        <Button type="button" onClick={this.cambiarTamanio.bind(this)} variant="warning"> Cambiar Tamanio</Button>
-<input className="form-control"  placeholder="Buscador de personajes " value={this.state.text} onChange={(text) => this.filter(text)}/>
+        <Button type="button" style={{ width:"100%"}} onClick={this.cambiarTamanio.bind(this)} variant="danger"> Cambiar Tamanio</Button>
+        
+        <br></br>
+        <br></br>
+        <br></br>
+    <input className="form-control"   placeholder="Buscador de personajes " value={this.state.text} onChange={(text) => this.filter(text)}/>
 
           {this.state.person.map((character,idx) => {
               return (
                 <Character 
-                  // tamanio= {this.state.tamanio}
+                  tamanio= {this.state.tamanio}
                   onDelete= {this.borrarItem.bind(this)}
                   key={idx}
                   id= {character.login.uuid}
