@@ -117,7 +117,7 @@ componentDidMount(){
 
     return (
       <div className="contenedor">
-        <Button type="button" style={{ width:"100%"}} onClick={this.cambiarTamanio.bind(this)} variant="danger"> Cambiar Tamanio</Button>
+        <Button type="button" style={{ width:"100%"}} onClick={this.cambiarTamanio.bind(this)} variant="info">    <i class="icon-resize-horizontal"></i>  <br></br>    Cambiar Tamanio</Button>
         
         <br></br>
         <br></br>
