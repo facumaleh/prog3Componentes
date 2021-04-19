@@ -12,8 +12,14 @@ class CharacterCard extends React.Component {
         isOpen: false,
         colorOriginal: this.props.color,
         color: this.props.color,
-        likes:0,
-            }
+        likes: 0,
+        // favoritosOriginal: [0],
+        // favoritos: 0,
+        // valorOriginal: this.props.valor,
+        // valor: this.props.valor
+
+        
+      }
             {console.log(this.state)}
 
     this.like1 = this.like1.bind(this);
@@ -33,6 +39,15 @@ class CharacterCard extends React.Component {
         }
         // console.log("Salgo de la tarjeta a " + colorViejo);
     }
+    // onFavoritos(valorN){
+    //   if (this.state.valor === valorN){
+    //     this.setState({valor: this.state.valorOriginal})
+        
+    //   } else {
+    //     this.setState({valor: valorN})
+    //     console.log(this.state.valor);
+    //   }
+    // }
     
     like1() {
       // Increment the likes property stored in state
@@ -53,7 +68,9 @@ class CharacterCard extends React.Component {
       render(){
         const { img, firstName, lastName,Email,City,State,Street,StreetNumber,Telephone, Country, Bithday,Registered, Date,id} = this.props;
         return(
-        < div className="card" style={{backgroundColor: this.state.color, width: this.props.tamanio}}
+        < div className="card" valor = {this.state.likes}
+        style={{backgroundColor: this.state.color, width: this.props.tamanio}}
+        
         onMouseEnter={this.MouseEnter.bind(this,"#E0E0E0")}
         onMouseLeave={this.MouseLeave.bind(this,this.state.colorOriginal)}
         >
@@ -69,8 +86,9 @@ class CharacterCard extends React.Component {
         <br/>
       
       <div>
-        <Button variant="success"type="button" style={{width:"17%", margin:"7%"}} onClick={this.like1}><i class="icon-thumbs-up"></i></Button> 
-       
+        {/* <Button variant="success"type="button" style={{width:"17%", margin:"7%"}} onClick= {this.props.onFavoritos.bind(this, "1")}><i class="icon-thumbs-up"></i></Button>  */}
+        <Button variant="success"type="button"style={{width:"17%", margin:"7%"}}  onClick={this.like1}><i class="icon-thumbs-up"></i></Button>
+
        <Button variant="danger"type="button"style={{width:"17%", margin:"7%"}}  onClick={this.nolike}><i class="icon-thumbs-down"></i></Button>
        <p style={{ margin:"7%"}}>{this.state.likes} liked this user</p> 
        </div>

@@ -45,13 +45,7 @@ class App extends React.Component {
       style={{backgroundColor: this.state.color}}>
 
       <Header /> 
-      <Button style={{ width:"90%"}} variant="info" className="buttonChange"
-       onClick={this.cambiarColor.bind(this,"black")}
-       onClick={this.cambiarLetra.bind(this,"white")}
-
-      ><i class="icon-moon"> <br></br> Cambiar Tema</i>
-       
-      </Button>
+      
       
       <Container/>
       <Footer/>

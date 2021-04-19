@@ -4,6 +4,7 @@ import '../../App.css';
 
 
 import React from "react";
+import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
 
 export default class Container extends React.Component {
   constructor(props){
@@ -13,11 +14,13 @@ export default class Container extends React.Component {
       loading: true,
       person: [],
       visible: 6,
-    personoriginal:[],
+      personoriginal:[],
       textoBuscar: " ",
        tamanioOriginal: '30%',
        tamanio: "30%",
-       nuevoTamanio: "17%"
+       nuevoTamanio: "17%",
+      //  personasFavoritas: [],
+      //  valor: "20",
     }; 
   }
 
@@ -60,9 +63,35 @@ componentDidMount(){
       return( characteridx!== person.login.uuid )
     })
     this.setState({person: resultados})
-
-
   }
+
+  // onFavoritos=(valor)=>{
+  //   // console.log( valor)
+
+  //   if(this.state.valor === valor){
+  //     this.setState({valor: "20"})
+  //   } else {
+  //     this.setState({valor: valor})
+  //   }
+
+  //   console.log(this.state.valor);
+    // if (this.state.personasFavoritas.includes(characteridx)){
+    //   return this.state.personasFavoritas
+    // } else {
+    //   this.state.personasFavoritas.push(characteridx)
+    // }
+    //   console.log(this.state.personasFavoritas);
+    //   this.setState({personasFavoritas: nuevoFav})
+    
+    // console.log(this.state.personasFavoritas);
+  // }
+
+  // muestraFav(){
+  //   let resultados = this.state.person.filter((person)=>{
+  //     return this.state.person.valor == "1"
+  //   })
+  //   this.setState({person: resultados})
+  // }
 
 
 
@@ -118,7 +147,9 @@ componentDidMount(){
     return (
       <div className="contenedor">
         <Button type="button" style={{ width:"100%"}} onClick={this.cambiarTamanio.bind(this)} variant="info">    <i class="icon-resize-horizontal"></i>  <br></br>    Cambiar Tamanio</Button>
-        
+        {/* <Button type="button" style={{ width:"35%", margin: "5%"}} onClick={this.muestraFav.bind(this)} variant="danger">    <i class="icon-resize-horizontal"></i>  <br></br>    Cambiar Tamanio</Button> */}
+
+
         <br></br>
         <br></br>
         <br></br>
@@ -147,6 +178,9 @@ componentDidMount(){
                   Date= {character.dob.date}
                   Registered = {character.registered.date}
                   color="white"
+                  // onFavoritos= {this.onFavoritos.bind(this)}
+                  // valor = {this.state.valor}
+
       
                 />
           );
