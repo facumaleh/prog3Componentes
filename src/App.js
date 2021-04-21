@@ -13,8 +13,8 @@ class App extends React.Component {
     this.state= {
         colorOriginal: "white",
         color: "white",
-        colorLetraOrig: "black",
-        colorLetra: "white",
+        // colorLetraOrig: "black",
+        // colorLetra: "white",
     };
   };
 
@@ -46,7 +46,10 @@ class App extends React.Component {
 
       <Header /> 
       
-      
+      <div className="cambiarFondo" style={{width: '90%', textAlign:'center', margin:'auto', backgroundColor:"#DEB887", borderRadius:'20px', hover:"#DEB888"}}
+      onClick={this.cambiarColor.bind(this, '#e0dfdc')}
+      >Cambiar color fondo
+      </div>
       <Container/>
       <Footer/>
 

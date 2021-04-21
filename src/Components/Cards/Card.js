@@ -69,7 +69,7 @@ class CharacterCard extends React.Component {
         const { img, firstName, lastName,Email,City,State,Street,StreetNumber,Telephone, Country, Bithday,Registered, Date,id} = this.props;
         return(
         < div className="card" valor = {this.state.likes}
-        style={{backgroundColor: this.state.color, width: this.props.tamanio}}
+        style={{backgroundColor: this.state.color, width: this.props.tamanio, borderRadius: "20px", borderColor: "#303030", padding:'0.5%'}}
         
         onMouseEnter={this.MouseEnter.bind(this,"#E0E0E0")}
         onMouseLeave={this.MouseLeave.bind(this,this.state.colorOriginal)}

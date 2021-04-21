@@ -65,36 +65,6 @@ componentDidMount(){
     this.setState({person: resultados})
   }
 
-  // onFavoritos=(valor)=>{
-  //   // console.log( valor)
-
-  //   if(this.state.valor === valor){
-  //     this.setState({valor: "20"})
-  //   } else {
-  //     this.setState({valor: valor})
-  //   }
-
-  //   console.log(this.state.valor);
-    // if (this.state.personasFavoritas.includes(characteridx)){
-    //   return this.state.personasFavoritas
-    // } else {
-    //   this.state.personasFavoritas.push(characteridx)
-    // }
-    //   console.log(this.state.personasFavoritas);
-    //   this.setState({personasFavoritas: nuevoFav})
-    
-    // console.log(this.state.personasFavoritas);
-  // }
-
-  // muestraFav(){
-  //   let resultados = this.state.person.filter((person)=>{
-  //     return this.state.person.valor == "1"
-  //   })
-  //   this.setState({person: resultados})
-  // }
-
-
-
   //buscador
   filter(event){
     if (event.target.value.length !== 0) {
