@@ -81,7 +81,7 @@ class CharacterCard extends React.Component {
         <br/>
         
         <br/>
-        <b className="texto1">Birthday:</b> {Date} <br></br>(Current age: {Bithday})
+        <b className="texto1">Birthday:</b> {Date.substring(0,10)} <br></br>(Current age: {Bithday})
         <br/>
         <br/>
       
