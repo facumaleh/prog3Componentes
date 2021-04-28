@@ -104,7 +104,22 @@ componentDidMount(){
     }
     
   }
+  // ordenar a....z
+  az = () => {
+    this.state.person.sort((a, b) => a.name.first.localeCompare(b.name.first))
+    this.setState({
+        person: this.state.person.sort(function(a, b) { return a.name.first > b.name.first})
+    })
+}
 
+//ordenar z...a
+
+za = () => {
+  this.state.person.sort((a, b) => b.name.first.localeCompare(a.name.first))
+  this.setState({
+      person: this.state.person.sort(function(a, b) { return a.name.first < b.name.first})
+  })
+}
   render() {
     if (this.state.loading) {
       return <div><h1 className="texto1">loading...</h1></div>;
@@ -123,8 +138,13 @@ componentDidMount(){
         <br></br>
         <br></br>
         <br></br>
-    <input className="form-control"   placeholder="Buscador de personajes " value={this.state.text} onChange={(text) => this.filter(text)}/>
+        <Button style={{width:"40%", marginLeft:"7%"}}onClick={this.az.bind(this)}  variant="info"  >A - Z</Button>
+        <Button style={{width:"40%", marginLeft:"7%"}}onClick={this.za.bind(this)}  variant="info"  >Z - A</Button>
 
+        <br></br>
+        <br></br>
+        <br></br>
+    <input className="form-control"   placeholder="Buscador de personajes " value={this.state.text} onChange={(text) => this.filter(text)}/>
           {this.state.person.map((character,idx) => {
               return (
                 <Character 
