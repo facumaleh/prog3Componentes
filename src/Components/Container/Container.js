@@ -19,8 +19,7 @@ export default class Container extends React.Component {
        tamanioOriginal: '30%',
        tamanio: "30%",
        nuevoTamanio: "17%",
-      //  personasFavoritas: [],
-      //  valor: "20",
+   
     }; 
   }
 
@@ -31,6 +30,7 @@ componentDidMount(){
   fetch('https://randomuser.me/api/?results=6')
   .then(response => response.json())
   .then ((data)=>{
+    //setea el estado de person
     this.setState({ person: data.results,personoriginal: data.results, loading: false });
   })
   .catch((e)=>console.log(e));}
@@ -40,10 +40,11 @@ componentDidMount(){
 
 // ver mas
   loadmore(){
+    // busco el classname de mas para meter en la url
     var porClassName=document.getElementsByClassName("mas")[0].value;
     console.log(porClassName)
     if (!porClassName) {
-      return alert ("ingrese un numero valido")
+      return alert ("Ingrese un numero valido")
     }
     fetch('https://randomuser.me/api/?results='+ porClassName)
     .then(response => response.json())
@@ -60,9 +61,13 @@ componentDidMount(){
   borrarItem(characteridx){
     console.log( characteridx);
     let resultados =this.state.person.filter((person)=> {
+      //  guardo en var resultados el filtro de person
       return( characteridx!== person.login.uuid )
+      //comparo idx con el uuid
     })
+    // seteo el estado 
     this.setState({person: resultados})
+    
   }
 
   //buscador
@@ -81,30 +86,45 @@ componentDidMount(){
           console.log(age);
           return (
             itemData.includes(textData) || lastName.includes(textData) || age.includes(textData)
-            
+           // comparo name o last name o age con el valor ingresado .
           )
       })
       this.setState({
+        //sete el estado de person con lo filtrado
           person: filtrado,
           textoBuscar: text,
       })
    } else this.setState({
+     // si no busco nada queda igual
     person:this.state.personoriginal
   })  }
 
 
   //cambiar tamañp
   cambiarTamanio=()=>{
+    //comparo tamano orignal del estado con el que esta ahora
     if(this.state.tamanio === this.state.tamanioOriginal){
       console.log(this.state.tamanio);
+      // si es igual lo cambio
       this.setState({tamanio: this.state.nuevoTamanio})
+      
     } else{
+   // si es distinto lo no cambio
       this.setState({tamanio: this.state.tamanioOriginal})
       console.log(this.state.tamanio);
     }
     
   }
   // ordenar a....z
+  // https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare
+// // La letra "a" es anterior a la "c" produciendo un valor negativo
+// 'a'.localeCompare('c'); // -2 o -1 (u otro valor negativo)
+
+// // Alfabeticamente la palabra "check" viene después de "against" produciendo un valor ppositivo
+// 'check'.localeCompare('against'); // 2 o 1 (u otro valor positivo)
+
+// // "a" y "a" son equivalentes produciendo un valor neutro de 0
+// 'a'.localeCompare('a'); // 0
   az = () => {
     this.state.person.sort((a, b) => a.name.first.localeCompare(b.name.first))
     this.setState({
@@ -114,6 +134,18 @@ componentDidMount(){
 
 //ordenar z...a
 
+
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare
+// // La letra "a" es anterior a la "c" produciendo un valor negativo
+// 'a'.localeCompare('c'); // -2 o -1 (u otro valor negativo)
+
+// // Alfabeticamente la palabra "check" viene después de "against" produciendo un valor ppositivo
+// 'check'.localeCompare('against'); // 2 o 1 (u otro valor positivo)
+
+// // "a" y "a" son equivalentes produciendo un valor neutro de 0
+// 'a'.localeCompare('a'); // 0
+
+
 za = () => {
   this.state.person.sort((a, b) => b.name.first.localeCompare(a.name.first))
   this.setState({
@@ -121,13 +153,7 @@ za = () => {
   })
 }
   render() {
-    if (this.state.loading) {
-      return <div><h1 className="texto1">loading...</h1></div>;
-    }
-
-    if (!this.state.person) {
-      return <div><h1 className="texto1">didn't get a person</h1></div>;
-    }
+    
 
     return (
       <div className="contenedor">
@@ -145,12 +171,20 @@ za = () => {
         <br></br>
         <br></br>
     <input className="form-control"   placeholder="Buscador de personajes " value={this.state.text} onChange={(text) => this.filter(text)}/>
+         {/* mapeo todos los items que me trae la api (bucle) mediante componetizacion con el com Character */}
           {this.state.person.map((character,idx) => {
               return (
                 <Character 
+                //le paso al componente hijo el valor del estado
                   tamanio= {this.state.tamanio}
+                  // le paso al comp hijo una fuction
                   onDelete= {this.borrarItem.bind(this)}
+                // bind vuelve dinamico un dato, el bind crea una function
+                
+                // idx del .map
                   key={idx}
+
+                  //  props de cada persona
                   id= {character.login.uuid}
                   firstName={character.name.first}
                   img={character.picture.large}
@@ -168,17 +202,16 @@ za = () => {
                   Date= {character.dob.date}
                   Registered = {character.registered.date}
                   color="white"
-                  // onFavoritos= {this.onFavoritos.bind(this)}
-                  // valor = {this.state.valor}
-
+               
       
                 />
           );
         })} 
             <div className= "Botonesx3">
           {/* //onchange */}
-          <input className = "mas"  type="text"/> 
-          <Button type="button" className='buttonLoad2'style={{width:"10%", margin:"7%"}} onClick={this.loadmore.bind(this)} > Cargar mas </Button>
+          {/* boton para poner mas cards */}
+          <input className = "mas"style={{width:"40%", margin:"7%"}} placeHolder="Ingrese cuantas tarjetas quiere sumar" type="text"/> 
+          <Button type="button" className='buttonLoad2'style={{width:"20%", margin:"7%"}} onClick={this.loadmore.bind(this)} > Cargar mas </Button>
           
         </div>
 

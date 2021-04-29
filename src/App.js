@@ -13,8 +13,7 @@ class App extends React.Component {
     this.state= {
         colorOriginal: "white",
         color: "white",
-        // colorLetraOrig: "black",
-        // colorLetra: "white",
+       
     };
   };
 
@@ -28,13 +27,7 @@ class App extends React.Component {
       }
     };
 
-    cambiarLetra = (colorLetra) => {
-      if (this.state.colorLetra === this.state.colorLetraOrig){
-        this.setState({color: colorLetra})
-      } else {
-        
-      }
-    }
+   
 
   render(){
 

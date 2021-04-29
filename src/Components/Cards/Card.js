@@ -4,20 +4,17 @@ import{Button,Modal} from 'react-bootstrap';
 
 
 class CharacterCard extends React.Component {
-
+// constuctor y el super nos deja trabajar con los estados 
+//El método constructor es necesario para poder definir la estructura de un componente
   constructor(props) {
       super(props);
-    
+    // estado
       this.state= {
         isOpen: false,
         colorOriginal: this.props.color,
         color: this.props.color,
         likes: 0,
-        // favoritosOriginal: [0],
-        // favoritos: 0,
-        // valorOriginal: this.props.valor,
-        // valor: this.props.valor
-
+        
         
       }
             {console.log(this.state)}
@@ -26,49 +23,48 @@ class CharacterCard extends React.Component {
     this.nolike = this.nolike.bind(this);
 
       }
+      // cuando el mouse pasas por la Card
       MouseEnter = (colorEntrar) => {
+        // compara el avlo de estado con el que pasamos como parametro
         if(this.state.color === this.state.colorOriginal) {
             this.setState({color: colorEntrar})
         }
         console.log(this.state);
       }
-
+      // cuando el mouse sale de la Card
       MouseLeave = (colorViejo) => {
+         // compara el avlo de estado con el que pasamos como parametro
         if(this.state.color === "#E0E0E0") {
             this.setState({color: colorViejo})
         }
         // console.log("Salgo de la tarjeta a " + colorViejo);
     }
-    // onFavoritos(valorN){
-    //   if (this.state.valor === valorN){
-    //     this.setState({valor: this.state.valorOriginal})
-        
-    //   } else {
-    //     this.setState({valor: valorN})
-    //     console.log(this.state.valor);
-    //   }
-    // }
+ 
     
     like1() {
       // Increment the likes property stored in state
-      this.setState(prevState => ({
-        likes: prevState.likes + 1
+      this.setState(qdelikes => ({
+        likes: qdelikes.likes + 1
       }));
     }
     nolike() {
       // Increment the likes property stored in state
-      this.setState(prevState => ({
-        likes: prevState.likes -1
+      this.setState(qdelikes => ({
+        likes: qdelikes.likes -1
       }));
     }
     
 
       openModal =  ()=> this.setState({isOpen: true});
       closeModal =  ()=> this.setState({isOpen: false});
+
       render(){
+        // usamos destructuring para poder llamar a las porps directo con un nombe mas facl
         const { img, firstName, lastName,Email,City,State,Street,StreetNumber,Telephone, Country, Bithday,Registered, Date,id} = this.props;
         return(
+         //se guarda el q de likes  de la card 
         < div className="card" valor = {this.state.likes}
+         //se guarda el tamanio de la card que cambia con el Onclick
         style={{backgroundColor: this.state.color, width: this.props.tamanio, borderRadius: "20px", borderColor: "#303030", padding:'0.5%'}}
         
         onMouseEnter={this.MouseEnter.bind(this,"#E0E0E0")}
@@ -86,7 +82,7 @@ class CharacterCard extends React.Component {
         <br/>
       
       <div>
-        {/* <Button variant="success"type="button" style={{width:"17%", margin:"7%"}} onClick= {this.props.onFavoritos.bind(this, "1")}><i class="icon-thumbs-up"></i></Button>  */}
+        {/*  btn de likes */}
         <Button variant="success"type="button"style={{width:"17%", margin:"7%"}}  onClick={this.like1}><i class="icon-thumbs-up"></i></Button>
 
        <Button variant="danger"type="button"style={{width:"17%", margin:"7%"}}  onClick={this.nolike}><i class="icon-thumbs-down"></i></Button>
@@ -103,10 +99,10 @@ class CharacterCard extends React.Component {
           <i class="icon-info-sign">  	Mas info</i>
         		 
       	</Button>
-
-
+      {/* Usamos REact boostrap y le seteamos en eleestado el isOpen, si esta cerrado
+        nose muestra, si se hace click lo abre y lo muestra */}
 				<Modal show= {this.state.isOpen}>
-        				<Modal.Header closeButton>
+        				<Modal.Header closeButton  onClick= {this.closeModal}>
    
          			 	<Modal.Title>{firstName}  {lastName}</Modal.Title>
         				</Modal.Header>
